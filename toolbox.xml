@@ -1,0 +1,6 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="CB MÀU" colour="#ae00ae" icon="palette">
+    <block type="yolobit_input_color_sensor_read" />
+    <block type="yolobit_input_color_sensor_detect" />
+  </category>
+</xml>
