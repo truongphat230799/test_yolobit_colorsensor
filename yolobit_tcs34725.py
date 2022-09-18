@@ -44,7 +44,7 @@ COLOR = {
 }
 
 class TCS34725:
-    def __init__(self, i2c, address=0x29, status = 0):
+    def __init__(self, i2c, address=0x29, status = 1):
         #status = 0
         self.i2c = i2c
         self.address = address
@@ -197,7 +197,7 @@ class TCS34725:
 
 class ColorSensor:
     
-    def __init__(self, address = 0x29, status = 0):
+    def __init__(self, address = 0x29, status = 1):
         self.address = address
         scl_pin = machine.Pin(22)
         sda_pin = machine.Pin(21)
