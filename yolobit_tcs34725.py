@@ -42,9 +42,9 @@ COLOR = {
     'w': 4 ,
     'y': 5
 }
-
+color_sensor_status = 0 # status 0 is not connected colorsensor and 1 is connected colorsensor
 class TCS34725:
-    def __init__(self, i2c, address=0x29, status = 1):
+    def __init__(self, i2c, address=0x29):
         #status = 0
         self.i2c = i2c
         self.address = address
@@ -54,9 +54,9 @@ class TCS34725:
         if sensor_id not in (0x44, 0x10):
             #raise RuntimeError
             print("wrong sensor id 0x{:x}".format(sensor_id))
-            self.status = 0
+            color_sensor_status = 0
         else:
-            self.status = 1
+            color_sensor_status = 1
 
 
     def _register8(self, register, value=None):
@@ -204,10 +204,10 @@ class ColorSensor:
         #status = 0 
         try:
             self.tcs = TCS34725(machine.SoftI2C(scl=scl_pin, sda=sda_pin), self.address)
-            self.status = 1 
+            color_sensor_status = 1 
         except:
             print('Color sensor not found')
-            self.status = 0
+            color_sensor_status = 0
             #raise Exception('Color sensor not found')
 
     def read(self, color):
@@ -216,7 +216,7 @@ class ColorSensor:
         color_sensor.read(0, 'r')
         range of value return: 0 - 255 (type int)
         '''
-        if self.status == 1 :
+        if color_sensor_status == 1 :
             return self.tcs.html_rgb()[COLOR[color]]
         else:
             print('0')
@@ -232,7 +232,7 @@ class ColorSensor:
                 white(16, 16, 16)
                 yellow (30, 15, 4)
         '''
-        if self.status ==1:
+        if color_sensor_status == 1:
             r, g, b = self.tcs.html_rgb()
             if max(r, g, b, limit) == r:
             #red
