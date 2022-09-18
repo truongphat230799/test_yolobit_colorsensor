@@ -197,17 +197,20 @@ class TCS34725:
 
 class ColorSensor:
     
-    def __init__(self, address = 0x29, status = 1):
+    def __init__(self, address = 0x29):
         self.address = address
         scl_pin = machine.Pin(22)
         sda_pin = machine.Pin(21)
         #status = 0 
         try:
             self.tcs = TCS34725(machine.SoftI2C(scl=scl_pin, sda=sda_pin), self.address)
-            color_sensor_status = 1 
+            if True:
+                color_sensor_status = 1
+            else:
+                color_sensor_status = 0
         except:
             print('Color sensor not found')
-            color_sensor_status = 0
+            #color_sensor_status = 0
             #raise Exception('Color sensor not found')
 
     def read(self, color):
