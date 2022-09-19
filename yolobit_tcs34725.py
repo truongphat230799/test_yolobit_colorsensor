@@ -245,30 +245,32 @@ class ColorSensor:
             #print(x)
             if max(r, g, b, limit) == r:
             #red
-                print(0 == COLOR[color])
+                return 0 == COLOR[color]
+                #return True
             elif max(r, g, b, limit) == g:
             #green
-                print(1 == COLOR[color])
+                return 1 == COLOR[color]
+                #return True
             elif max(r, g, b, limit) == b:
             #blue
-                print(2 == COLOR[color])
+                return 2 == COLOR[color]
             elif max(r, g, b) < (limit/3):
             #black
-                print(3 == COLOR[color])
+                return 3 == COLOR[color]
             elif min(r, g, b) > (limit/3):
             #white
-                print(4 == COLOR[color])
+                return 4 == COLOR[color]
             elif ((26 < r < 36) and (14 < g < 24) and (0 < b < 8)):
             #yellow
-                print(5 == COLOR[color])
+                return 5 == COLOR[color]
             else:
             #other colors
-                print(False)
+                return False
             
         else:
             #x = self.color_sensor_status
             #print(self.color_sensor_status)
             #print(x)
-            print(False)
+            return False
             
 color_sensor = ColorSensor()
