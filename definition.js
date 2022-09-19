@@ -66,7 +66,7 @@ Blockly.Blocks["yolobit_input_color_sensor_detect"] = {
 Blockly.Python["yolobit_input_color_sensor_read"] = function (block) {
   var RGB = block.getFieldValue("RGB");
   // TODO: Assemble Python into code variable.
-  Blockly.Python.definitions_['import_color_sensor'] = "from yolobit_tcs34725 import color_sensor";
+  Blockly.Python.definitions_['import_color_sensor'] = "from tcs import color_sensor";
   var code = "color_sensor.read('" + RGB +"')";
   return [code, Blockly.Python.ORDER_NONE];
 };
@@ -74,7 +74,7 @@ Blockly.Python["yolobit_input_color_sensor_read"] = function (block) {
 Blockly.Python["yolobit_input_color_sensor_detect"] = function (block) {
   var color = block.getFieldValue("color");
   // TODO: Assemble Python into code variable.
-  Blockly.Python.definitions_['import_color_sensor'] = "from yolobit_tcs34725 import color_sensor";
+  Blockly.Python.definitions_['import_color_sensor'] = "from tcs import color_sensor";
   var code = "color_sensor.detect('" + color +"')";
   return [code, Blockly.Python.ORDER_NONE];
 };
