@@ -2,7 +2,7 @@
     "name": "Cảm biến màu sắc",
     "description": "Mục mở rộng của Yolo:Bit cho cảm biến màu sắc",
     "libs": [
-        "yolobit_tcs34725.py"
+        "tcs.py"
     ],
     "blocks": [
         "definition.js"
